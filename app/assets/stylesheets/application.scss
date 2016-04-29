@@ -19,3 +19,43 @@
 @import "bootstrap";
 @import "bootswatch/spacelab/bootswatch";
 @import "font-awesome";
+
+// Override font-awesome
+.fa {
+  margin-right: 7px;
+}
+
+// Override bootstrap
+.dropdown-menu .divider {
+  // background-color: #333;
+}
+.dropdown-menu > li > a {
+  font-size: 13px;
+}
+body > .container {
+  margin-top: 20px;
+}
+.navbar {
+  // font-size: 16px;
+  margin-bottom: 2px;
+}
+.alert {
+  padding: 5px 10px;
+  font-size: 13px;
+  margin: 0;
+  float: right;
+}
+
+// Custom Style
+.line-divider {
+  margin-top: 40px;
+  border-top: 1px solid #4E5D6C;
+}
+
+// Global Style
+footer {
+  margin: 80px auto 30px;
+}
+body > .container {
+  min-height: 650px;
+}
