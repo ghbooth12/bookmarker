@@ -22,7 +22,7 @@
 
 // Override font-awesome
 .fa {
-  margin-right: 7px;
+  // margin-right: 7px;
 }
 
 // Override bootstrap
@@ -51,6 +51,16 @@ body > .container {
   margin-top: 40px;
   border-top: 1px solid #4E5D6C;
 }
+.btn-wide {
+  width: 100%;
+  display: block;
+}
+.margin-none {
+  margin: 0;
+}
+.inlined {
+  display: inline-block;
+}
 
 // Global Style
 footer {
@@ -58,4 +68,7 @@ footer {
 }
 body > .container {
   min-height: 650px;
+}
+section {
+  margin-top: 10px;
 }
