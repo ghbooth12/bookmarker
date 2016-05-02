@@ -1,6 +1,8 @@
 class TopicsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_topic, only: [:show, :edit, :update, :destroy]
+  before_action :set_topic, only: [:edit, :update, :destroy]
+  before_action :user_sign_in?, only: [:new, :create]
+  before_action :user_authorized?, only: [:edit, :update, :destroy]
 
   def index
     @topics = Topic.all
@@ -21,12 +23,13 @@ class TopicsController < ApplicationController
       flash[:notice] = "Topic was saved successfully."
       redirect_to topics_path
     else
-      flash.now[:alert] = "Saving topic failed."
+      flash[:alert] = "Saving topic failed."
       redirect_to topics_path
     end
   end
 
   def show
+    @topic = Topic.find(params[:id])
   end
 
   def edit
@@ -40,7 +43,7 @@ class TopicsController < ApplicationController
       flash[:notice] = "Topic was updated successfully."
       redirect_to topics_path
     else
-      flash.now[:alert] = "Updating topic failed."
+      flash[:alert] = "Updating topic failed."
       redirect_to topics_path
     end
   end
@@ -50,7 +53,7 @@ class TopicsController < ApplicationController
       flash[:notice] = "Topic was deleted successfully."
       redirect_to topics_path
     else
-      flash.now[:alert] = "Deleting topic failed."
+      flash[:alert] = "Deleting topic failed."
       redirect_to topics_path
     end
   end
@@ -63,5 +66,19 @@ class TopicsController < ApplicationController
 
   def topic_params
     params.require(:topic).permit(:title)
+  end
+
+  def user_sign_in?
+    unless current_user
+      flash[:alert] = "Please sign in to proceed."
+      redirect_to new_user_session_path and return
+    end
+  end
+
+  def user_authorized?
+    unless current_user == @topic.user
+      flash[:alert] = "Sorry. You are not authorized for this."
+      redirect_to topics_path and return
+    end
   end
 end
