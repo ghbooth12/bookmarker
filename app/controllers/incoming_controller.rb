@@ -1,9 +1,10 @@
 class IncomingController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:create]
   skip_before_action :verify_authenticity_token, only: [:create]
 
   def create
     user  = User.find_by(email: params[:sender])
-    topic = Topic.find_or_create_by(title: params[:subject])
+    topic = Topic.find_or_create_by(title: params[:subject], user_id: user.id)
     url   = params["body-plain"]
 
     topic.bookmarks.create(url: url, user_id: user.id)
