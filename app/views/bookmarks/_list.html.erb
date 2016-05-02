@@ -1,9 +1,11 @@
 <% bookmarks.each do |bookmark| %>
   <p><%= link_to bookmark.url, bookmark.url, target: '_blank' %></p>
-  
-  <%= link_to fa_icon('pencil', 'aria-hidden' => true), edit_topic_bookmark_path(bookmark.topic, bookmark), class: 'btn-xs btn-info', remote: true, data: {toggle: 'modal', target: '#bookmark-edit'} %>
-  <%= link_to fa_icon('trash', 'aria-hidden' => true), [bookmark.topic, bookmark], method: :delete, class: 'btn-xs btn-danger', data: {confirm: "Are you sure to delete this bookmark?"} %>
+
   <%= link_to fa_icon('heart', 'aria-hidden' => true, text: 'Like'), bookmark.url, class: 'btn-xs btn-primary' %>
+  <% if current_user == bookmark.user %>
+    <%= link_to fa_icon('pencil', 'aria-hidden' => true), edit_topic_bookmark_path(bookmark.topic, bookmark), class: 'btn-xs btn-info', remote: true, data: {toggle: 'modal', target: '#bookmark-edit'} %>
+    <%= link_to fa_icon('trash', 'aria-hidden' => true), [bookmark.topic, bookmark], method: :delete, class: 'btn-xs btn-danger', data: {confirm: "Are you sure to delete this bookmark?"} %>
+  <% end %>
 <% end %>
 
 <!-- Modal -->

@@ -4,15 +4,19 @@
     <div class="col-md-4">
       <h3 class="text-center" style="margin-top: 40px;">All Bookmarks</h3>
       <p style="margin-top: 20px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <%= link_to fa_icon('plus', 'aria-hidden' => true, text: 'Add New Topic'), new_topic_path, class: 'btn btn-success btn-wide text-center', style: "margin-top: 20px;", remote: true, data: {toggle: 'modal', target: '#topic-new'} %>
+      <% if current_user %>
+        <%= link_to fa_icon('plus', 'aria-hidden' => true, text: 'Add New Topic'), new_topic_path, class: 'btn btn-success btn-wide text-center', style: "margin-top: 20px;", remote: true, data: {toggle: 'modal', target: '#topic-new'} %>
+      <% end %>
     </div>
   </div> <!-- /.row -->
 
   <% @topics.each do |topic| %>
     <%= content_tag :div, id: "topic-#{topic.id}" do %>
       <h4 class="inlined"><%= link_to topic.title, topic_path(topic) %></h4>
-      <%= link_to fa_icon('pencil', 'aria-hidden' => true), edit_topic_path(topic), class: 'btn-xs btn-info', remote: true, data: {toggle: 'modal', target: '#topic-edit'} %>
-      <%= link_to fa_icon('trash', 'aria-hidden' => true), topic, method: :delete, class: 'btn-xs btn-danger', data: {confirm: "Are you sure to delete this topic?"} %>
+      <% if current_user == topic.user %>
+        <%= link_to fa_icon('pencil', 'aria-hidden' => true), edit_topic_path(topic), class: 'btn-xs btn-info', remote: true, data: {toggle: 'modal', target: '#topic-edit'} %>
+        <%= link_to fa_icon('trash', 'aria-hidden' => true), topic, method: :delete, class: 'btn-xs btn-danger', data: {confirm: "Are you sure to delete this topic?"} %>
+      <% end %>
 
       <%= render 'bookmarks/preview', { bookmarks: topic.bookmarks } %>
     <% end %>

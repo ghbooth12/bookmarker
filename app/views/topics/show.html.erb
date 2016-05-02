@@ -1,7 +1,9 @@
 <div class="container">
   <div class="page-header">
     <h3 class="inlined"><%= @topic.title %></h3>
-    <%= link_to fa_icon('plus', 'aria-hidden' => true, text: 'Add New Bookmark'), new_topic_bookmark_path(@topic), class: 'btn-xs btn-success', style: "margin-left: 10px;", remote: true, data: {toggle: 'modal', target: '#bookmark-new'} %>
+    <% if current_user == @topic.user %>
+      <%= link_to fa_icon('plus', 'aria-hidden' => true, text: 'Add New Bookmark'), new_topic_bookmark_path(@topic), class: 'btn-xs btn-success', style: "margin-left: 10px;", remote: true, data: {toggle: 'modal', target: '#bookmark-new'} %>
+    <% end %>
   </div>
 
   <%= render 'bookmarks/list', { bookmarks: @topic.bookmarks } %>
