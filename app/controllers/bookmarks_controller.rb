@@ -1,5 +1,6 @@
 class BookmarksController < ApplicationController
   before_action :set_bookmark, only: [:edit, :update, :destroy]
+  before_action :user_authorized?
 
   def new
     @topic = Topic.find(params[:topic_id])
@@ -58,5 +59,13 @@ class BookmarksController < ApplicationController
 
   def bookmark_params
     params.require(:bookmark).permit(:url)
+  end
+
+  def user_authorized?
+    topic = Topic.find(params[:topic_id])
+    unless current_user == topic.user
+      flash[:alert] = "Sorry. You are not authorized for this."
+      redirect_to topic_path(topic)
+    end
   end
 end
