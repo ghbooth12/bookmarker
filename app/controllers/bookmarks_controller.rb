@@ -14,6 +14,7 @@ class BookmarksController < ApplicationController
   def create
     @topic = Topic.find(params[:topic_id])
     @bookmark = @topic.bookmarks.build(bookmark_params)
+    @bookmark.user = current_user
 
     if @bookmark.save
       flash[:notice] = "Bookmark was saved successfully."
@@ -55,6 +56,7 @@ class BookmarksController < ApplicationController
   def set_bookmark
     @topic = Topic.find(params[:topic_id])
     @bookmark = @topic.bookmarks.find(params[:id])
+    @bookmark.user = current_user
   end
 
   def bookmark_params
