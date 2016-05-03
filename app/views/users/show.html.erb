@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="page-header">
+    <h3><%= @user.username %>'s Bookmarker</h3>
+  </div>
+
+  <h4>Bookmarked URLs</h4>
+  <%= render 'bookmarks/list', { bookmarks: @user_bookmarks } %>
+  <hr>
+  <h4>Liked URLs</h4>
+  <%= render 'bookmarks/list', { bookmarks: @liked_bookmarks } %>
+</div> <!-- /.container -->

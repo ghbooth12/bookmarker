@@ -11,10 +11,7 @@ class IncomingController < ApplicationController
         topic = Topic.create(title: params[:subject], user_id: user.id)
         topic.bookmarks.create(url: url, user_id: user.id)
       end
-      head 200
-    else
-      render(json: "Unregistered Email")
-      head 200
     end
+    head 200
   end
 end
