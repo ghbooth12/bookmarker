@@ -1,6 +1,5 @@
 class BookmarksController < ApplicationController
   before_action :set_bookmark, only: [:edit, :update, :destroy]
-  before_action :user_authorized?
 
   def new
     @topic = Topic.find(params[:topic_id])
@@ -20,7 +19,7 @@ class BookmarksController < ApplicationController
       flash[:notice] = "Bookmark was saved successfully."
       redirect_to topic_path(@topic)
     else
-      flash.now[:alert] = "Saving bookmark failed."
+      flash[:alert] = "Saving bookmark failed."
       redirect_to topic_path(@topic)
     end
   end
@@ -32,21 +31,23 @@ class BookmarksController < ApplicationController
   end
 
   def update
+    authorize @bookmark
     if @bookmark.update_attributes(bookmark_params)
       flash[:notice] = "Bookmark was updated successfully."
       redirect_to topic_path(@topic)
     else
-      flash.now[:alert] = "Updating bookmark failed."
+      flash[:alert] = "Updating bookmark failed."
       redirect_to topic_path(@topic)
     end
   end
 
   def destroy
+    authorize @bookmark
     if @bookmark.destroy
       flash[:notice] = "Bookmark was deleted successfully."
       redirect_to topic_path(@topic)
     else
-      flash.now[:alert] = "Deleting bookmark failed."
+      flash[:alert] = "Deleting bookmark failed."
       redirect_to topic_path(@topic)
     end
   end
@@ -56,18 +57,9 @@ class BookmarksController < ApplicationController
   def set_bookmark
     @topic = Topic.find(params[:topic_id])
     @bookmark = @topic.bookmarks.find(params[:id])
-    @bookmark.user = current_user
   end
 
   def bookmark_params
     params.require(:bookmark).permit(:url)
-  end
-
-  def user_authorized?
-    topic = Topic.find(params[:topic_id])
-    unless current_user == topic.user
-      flash[:alert] = "Sorry. You are not authorized for this."
-      redirect_to topic_path(topic)
-    end
   end
 end
