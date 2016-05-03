@@ -2,7 +2,7 @@
   <p><%= link_to bookmark.url, bookmark.url, target: '_blank' %></p>
   <small>written by <%= bookmark.user.username %></small>
 
-  <%= link_to fa_icon('heart', 'aria-hidden' => true, text: 'Like'), bookmark.url, class: 'btn-xs btn-primary' %>
+  <%= render 'likes/like', { bookmark: bookmark } %>
   <% if policy(bookmark).update? %>
     <%= link_to fa_icon('pencil', 'aria-hidden' => true), edit_topic_bookmark_path(bookmark.topic, bookmark), class: 'btn-xs btn-info', remote: true, data: {toggle: 'modal', target: '#bookmark-edit'} %>
   <% end %>

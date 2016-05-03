@@ -8,7 +8,9 @@ class IncomingController < ApplicationController
       url = params["body-plain"]
 
       topic.bookmarks.find_or_create_by(url: url, user_id: user.id)
+      head 200
+    else
+      head 403
     end
-    head 200
   end
 end
