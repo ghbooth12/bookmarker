@@ -1,7 +1,9 @@
 <div class="container">
   <div class="page-header">
     <h3 class="inlined"><%= @topic.title %></h3>
-    <% if current_user == @topic.user %>
+    <small>written by <%= @topic.user.username %></small>
+
+    <% if current_user %>
       <%= link_to fa_icon('plus', 'aria-hidden' => true, text: 'Add New Bookmark'), new_topic_bookmark_path(@topic), class: 'btn-xs btn-success', style: "margin-left: 10px;", remote: true, data: {toggle: 'modal', target: '#bookmark-new'} %>
     <% end %>
   </div>
