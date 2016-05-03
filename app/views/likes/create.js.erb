@@ -1,0 +1,6 @@
+<% if Like.exists?(id: @like.id) %>
+  // $('.flash').html("<div class='alert alert-success' data-dismiss='alert' style='cursor: pointer;'><%= @msg %></div>");
+  $('#bookmark-<%= @bookmark.id %>').html("<%=j link_to fa_icon('heart', 'aria-hidden' => true, text: @bookmark.likes.count), [@bookmark, @like], method: :delete, remote: true, class: 'btn-xs btn-warning' %>");
+<% else %>
+  $('.flash').html("<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert'></button><%= @msg %></div>");
+<% end %>
