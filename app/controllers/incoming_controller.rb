@@ -4,13 +4,17 @@ class IncomingController < ApplicationController
 
   def create
     if user = User.find_by(email: params[:sender])
-      topic = Topic.find_or_create_by(title: params[:subject], user_id: user.id)
       url = params["body-plain"]
-
-      topic.bookmarks.find_or_create_by(url: url, user_id: user.id)
+      if topic = Topic.find_by(title: params[:subject])
+        topic.bookmarks.find_or_create_by(url: url, user_id: user.id)
+      else
+        topic = Topic.create(title: params[:subject], user_id: user.id)
+        topic.bookmarks.create(url: url, user_id: user.id)
+      end
       head 200
     else
-      head 403
+      render(json: "Unregistered Email")
+      head 200
     end
   end
 end
