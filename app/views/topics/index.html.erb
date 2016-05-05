@@ -1,5 +1,5 @@
 <section>
-  <div class="row margin-none">
+  <div class="row margin-none" style="margin-bottom: 30px;">
     <div id="topic-index-bg" class="col-md-8"></div>
     <div class="col-md-4">
       <h3 class="text-center" style="margin-top: 40px;">All Bookmarks</h3>
@@ -10,16 +10,28 @@
     </div>
   </div> <!-- /.row -->
 
+  <div class="text-center">
+    <p>&mdash;</p>
+    <% @topics.each do |topic| %>
+      <%= link_to topic.title, "#topic-#{topic.id}", class: 'margin-right-lg' %>
+    <% end %>
+  </div>
+
   <% @topics.each do |topic| %>
     <%= content_tag :div, id: "topic-#{topic.id}" do %>
-      <h4 class="inlined"><%= link_to topic.title, topic_path(topic) %></h4>
+      <h3 class="inlined my-heading margin-right"><%= link_to topic.title, topic_path(topic) %></h3>
       <% if current_user == topic.user %>
         <%= link_to fa_icon('pencil', 'aria-hidden' => true), edit_topic_path(topic), class: 'btn-xs btn-info', remote: true, data: {toggle: 'modal', target: '#topic-edit'} %>
         <%= link_to fa_icon('trash', 'aria-hidden' => true), topic, method: :delete, class: 'btn-xs btn-danger', data: {confirm: "Are you sure to delete this topic?"} %>
       <% end %>
 
-      <%= render 'bookmarks/preview', { bookmarks: topic.bookmarks } %>
+      <%= render 'bookmarks/preview', { bookmarks: topic.bookmarks.by_likes[0..3] } %>
+
+      <div class="row">
+        <%= link_to 'See All', topic_path(topic), class: 'btn btn-primary pull-right' %>
+      </div>
     <% end %>
+    <hr>
   <% end %>
 </section>
 

@@ -1,11 +1,14 @@
 <div class="container">
   <div class="page-header">
-    <h3 class="inlined"><%= @topic.title %></h3>
+    <h3 class="inlined my-heading margin-right"><%= @topic.title %></h3>
     <small>written by <%= link_to @topic.user.username, user_path(@topic.user) %></small>
 
-    <% if current_user %>
-      <%= link_to fa_icon('plus', 'aria-hidden' => true, text: 'Add New Bookmark'), new_topic_bookmark_path(@topic), class: 'btn-xs btn-success', style: "margin-left: 10px;", remote: true, data: {toggle: 'modal', target: '#bookmark-new'} %>
-    <% end %>
+    <div class="pull-right" style="margin-top: 20px;">
+      <%= link_to fa_icon('star', 'aria-hidden' => true, text: ' Back to Bookmarks'), topics_path, class: 'btn-sm btn-primary' %>
+      <% if current_user %>
+        <%= link_to fa_icon('plus', 'aria-hidden' => true, text: 'Add New Bookmark'), new_topic_bookmark_path(@topic), class: 'btn-sm btn-success', remote: true, data: {toggle: 'modal', target: '#bookmark-new'} %>
+      <% end %>
+    </div>
   </div>
 
   <%= render 'bookmarks/list', { bookmarks: @topic.bookmarks } %>

@@ -1,5 +1,5 @@
 <% if policy(Like.new).create? %>
-  <%= content_tag :div, id: "bookmark-#{bookmark.id}" do %>
+  <%= content_tag :div, id: "bookmark-#{bookmark.id}", class: 'inlined' do %>
     <% if like = current_user.liked(bookmark) %>
       <%= link_to fa_icon('heart', 'aria-hidden' => true, text: bookmark.likes.count), [bookmark, like], method: :delete, remote: true, class: 'btn-xs btn-warning' %>
     <% else %>
