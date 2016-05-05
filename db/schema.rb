@@ -11,14 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160503182135) do
+ActiveRecord::Schema.define(version: 20160504203655) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.string   "url"
     t.integer  "topic_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "user_id"
+    t.string   "embedly_url"
+    t.integer  "likes_count", default: 0
   end
 
   add_index "bookmarks", ["topic_id"], name: "index_bookmarks_on_topic_id"

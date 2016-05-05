@@ -58,8 +58,20 @@ body > .container {
 .margin-none {
   margin: 0;
 }
+.margin-right {
+  margin-right: 10px;
+}
+.margin-right-lg {
+  margin-right: 20px;
+}
+.blocked {
+  display: block;
+}
 .inlined {
   display: inline-block;
+}
+.my-heading {
+  font-weight: 600;
 }
 
 // Global Style
@@ -74,4 +86,7 @@ section {
 }
 a:hover {
   text-decoration: none;
+}
+.embedly-card {
+  height: 400px;
 }

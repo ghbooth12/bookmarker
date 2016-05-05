@@ -1,11 +1,16 @@
 <div class="container">
-  <div class="page-header">
-    <h3><%= @user.username %>'s Bookmarker</h3>
+  <div class="page-header text-center">
+    <h2><%= @user.username %>'s Bookmarker</h2>
   </div>
 
-  <h4>Bookmarked URLs</h4>
+  <div class="text-center" style="margin-bottom: 40px;">
+    <%= link_to 'Bookmarked URLs', "#bookmarked-urls", class: 'margin-right-lg' %>
+    <%= link_to 'Liked URLs', "#liked-urls", class: 'margin-right-lg' %>
+  </div>
+
+  <h3 id="bookmarked-urls" class="my-heading">Bookmarked URLs</h3>
   <%= render 'bookmarks/list', { bookmarks: @user_bookmarks } %>
-  <hr>
-  <h4>Liked URLs</h4>
+
+  <h3 id="liked-urls" class="my-heading">Liked URLs</h3>
   <%= render 'bookmarks/list', { bookmarks: @liked_bookmarks } %>
 </div> <!-- /.container -->
