@@ -1,0 +1,10 @@
+<div class="col-md-3 col-sm-6">
+  <div class="embedly-heading">
+    <h5><%= truncate(bookmark.embedly_title, length: 60) %></h5>
+    <p><%= truncate(bookmark.embedly_description, length: 60) %></p>
+  </div>
+  <p><%= render 'likes/like', { bookmark: bookmark } %></p>
+  <%= link_to bookmark.url, target: '_blank' do %>
+    <p style="margin-bottom: 30px;"><%= image_tag bookmark.embedly_url, width: '200', height: '80' %></p>
+  <% end %>
+</div>

@@ -1,17 +1,12 @@
 <div class="row">
   <% bookmarks.each do |bookmark| %>
-    <div class="col-md-3">
-      <!-- image_tag(bookmark.embedly_url, width: '100') -->
+    <div class="col-md-3 col-sm-4">
       <%= link_to bookmark.url, bookmark.url, target: '_blank', class: 'embedly-card' %>
+      <br>
       <small class="blocked" style="margin-bottom: 8px;">written by <%= link_to bookmark.user.username, user_path(bookmark.user) %></small>
 
       <%= render 'likes/like', { bookmark: bookmark } %>
-      <% if policy(bookmark).update? %>
-        <%= link_to fa_icon('pencil', 'aria-hidden' => true), edit_topic_bookmark_path(bookmark.topic, bookmark), class: 'btn-xs btn-info', remote: true, data: {toggle: 'modal', target: '#bookmark-edit'} %>
-      <% end %>
-      <% if policy(bookmark).destroy? %>
-        <%= link_to fa_icon('trash', 'aria-hidden' => true), [bookmark.topic, bookmark], method: :delete, class: 'btn-xs btn-danger', data: {confirm: "Are you sure to delete this bookmark?"} %>
-      <% end %>
+      <%= render 'bookmarks/editable', { bookmark: bookmark } %>
       <hr>
     </div>
   <% end %>

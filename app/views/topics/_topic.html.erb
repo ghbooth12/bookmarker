@@ -1,0 +1,16 @@
+<%= content_tag :div, id: "topic-#{topic.id}" do %>
+  <h3 class="inlined my-heading margin-right"><%= link_to topic.title, topic_path(topic) %></h3>
+  <% if current_user == topic.user %>
+    <%= link_to fa_icon('pencil', 'aria-hidden' => true), edit_topic_path(topic), class: 'btn-xs btn-info', remote: true, data: {toggle: 'modal', target: '#topic-edit'} %>
+    <%= link_to fa_icon('trash', 'aria-hidden' => true), topic, method: :delete, class: 'btn-xs btn-danger', data: {confirm: "Are you sure to delete this topic?"} %>
+  <% end %>
+
+  <div class="row">
+    <%= render topic.bookmarks.by_likes[0..3] %>
+  </div>
+
+  <div class="row">
+    <%= link_to 'See All', topic_path(topic), class: 'btn btn-primary pull-right' %>
+  </div>
+<% end %>
+<hr>

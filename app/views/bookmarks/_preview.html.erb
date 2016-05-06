@@ -1,9 +1,0 @@
-<div class="row">
-  <% bookmarks.each do |bookmark| %>
-    <div class="col-md-3">
-      <!-- image_tag(bookmark.embedly_url, width: '100') -->
-      <%= link_to bookmark.url, bookmark.url, target: '_blank', class: 'embedly-card' %>
-      <p style="color: red;">likes_count: <%= bookmark.likes_count %></p>
-    </div>
-  <% end %>
-</div>
