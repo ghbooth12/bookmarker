@@ -3,7 +3,7 @@ class Bookmark < ActiveRecord::Base
   belongs_to :topic
   has_many :likes, dependent: :destroy
 
-  after_create :set_embedly_url
+  after_create :set_embedly_attrs
 
   validates :url, presence: true
 
