@@ -11,7 +11,7 @@
     </div>
   </div>
 
-  <%= render 'bookmarks/list', { bookmarks: @topic.bookmarks } %>
+  <%= render 'bookmarks/list', { bookmarks: @topic.bookmarks.by_likes } %>
 </div> <!-- /.container -->
 
 <!-- Modal -->
@@ -28,3 +28,5 @@
     </div>
   </div>
 </div>
+
+<script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
