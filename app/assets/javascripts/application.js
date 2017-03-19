@@ -15,3 +15,27 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+
+// application.js
+var analytics_app = {};
+analytics_app.report = function(eventName){
+  var event = { event: { name: eventName } };
+  var request = new XMLHttpRequest();
+
+  request.open("POST", "http://analytics-app-ghbooth12.herokuapp.com/api/events", true);
+  request.setRequestHeader('Content-Type', 'application/json');
+  request.send(JSON.stringify(event));
+};
+
+// ============ e.g., Track "click" event on "#target-element" element. ============
+$(document).ready(function(){
+  $('#steps a').on("click", function(){
+    analytics_app.report("<a> tags clicked from the greeting section");
+  });
+  $('section .margin-none a').on("click", function(){
+    analytics_app.report("New bookmark URL Created");
+  });
+  $('.fa-heart').on("click", function(){
+    analytics_app.report("Voting up");
+  });
+});
