@@ -20,4 +20,35 @@
     display: inline-block;
     margin-top: 20px;
   }
+
+  .features {
+    p {
+      font-size: 1em;
+    }
+  }
+}
+
+#steps {
+  .hover-link {
+    a {
+      color: #333;
+      -webkit-transition: color .15s ease-in-out;
+      transition: color .15s ease-in-out;
+
+      &:hover {
+        color: #1397ff;
+      }
+    }
+  }
+  // Override hove-link for bootstrap buttons
+  a.btn {
+    color: #fff;
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  li {
+    font-size: 1.1em;
+  }
 }

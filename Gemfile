@@ -17,7 +17,6 @@ group :development, :test do
   gem 'spring'
   gem 'rspec-rails', '~> 3.0'
   gem 'shoulda'
-  gem 'faker'
   gem 'factory_girl_rails'
 end
 
@@ -35,3 +34,5 @@ gem 'font-awesome-rails'
 gem 'pundit'
 gem 'embedly'
 gem 'friendly_id', '~> 5.1.0'
+gem 'faker', '~> 1.6', '>= 1.6.3'
+

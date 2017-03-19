@@ -1,20 +1,54 @@
 <div id="main-bg" class="jumbotron text-center">
-  <h2>Bookmarker</h2>
-  <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</small>
-  <p><%= link_to 'Learn more', topics_path, class: 'btn btn-info' %></p>
+
+  <p>Bookmarker is a social bookmarking app.</p>
+
+  <div class="row margin-none text-center features space">
+    <div class="col-sm-4">
+      <h4><i class="fa fa-check-square-o" aria-hidden="true"></i> Fast & Easy</h4>
+      <p>Add URLs in website or add URLs via email.</p>
+    </div>
+    <div class="col-sm-4">
+      <h4><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Socializing</h4>
+      <p>Share own bookmarks URLs and check out others. And "Like" them.</p>
+    </div>
+    <div class="col-sm-4">
+      <h4><i class="fa fa-list-ul" aria-hidden="true"></i> Organized</h4>
+      <p>User maintains a personal index of categorized bookmarks.</p>
+    </div>
+  </div>
+
+  <a href="https://github.com/ghbooth12/bookmarker" target="_blank" class="btn btn-info"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a>
+  <a id="target-element" class="btn btn-primary" href="/topics" role="button">See All Bookmarks</a>
+  <%= link_to "Sign in as test user", auto_sign_path, class: 'btn btn-success' %>
 </div>
 
-<div class="row margin-none text-center">
-  <div class="col-sm-4">
-    <h3><i class="fa fa-tachometer" aria-hidden="true"></i> Fast & Easy</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-  </div>
-  <div class="col-sm-4">
-    <h3><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Socializing</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-  </div>
-  <div class="col-sm-4">
-    <h3><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editable</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+<div id="steps" class="row">
+  <div class="col-xs-12">
+    <div class="panel">
+      <div class="panel-heading">
+        <h2><strong>How it works</strong></h2>
+        <p>Log-in as test user account, take a look how it works.</p>
+      </div>
+
+      <div class="panel-body">
+        <div class="well">
+          <ol class="hover-link">
+            <li>
+              Log in as test user automatically. <%= link_to "Click here", auto_sign_path, class: 'btn btn-xs btn-success' %>
+            </li>
+            <li>
+              <%= link_to topics_path do %>
+                Go to all bookmarks page. <span class="glyphicon glyphicon-link" aria-hidden="true"></span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to  %>
+            </li>
+            
+          </ol>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>

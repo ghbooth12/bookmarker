@@ -219,7 +219,7 @@ DEPENDENCIES
   devise
   embedly
   factory_girl_rails
-  faker
+  faker (~> 1.6, >= 1.6.3)
   figaro
   font-awesome-rails
   friendly_id (~> 5.1.0)
@@ -239,4 +239,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.11.2
+   1.13.6

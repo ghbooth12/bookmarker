@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users, only: [:show]
-  
+
+  get 'auto_sign' => 'welcome#auto_sign'
+
   root 'welcome#index'
 end
