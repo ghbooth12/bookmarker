@@ -3,6 +3,7 @@ class WelcomeController < ApplicationController
 
   def index
     @test_user = User.find_by(email: "test@test.io")
+    @topic = Topic.first
   end
 
   def auto_sign
