@@ -32,9 +32,15 @@ $(document).ready(function(){
   $('#steps a').on("click", function(){
     analytics_app.report("<a> tags clicked from the greeting section");
   });
+});
+
+$(document).ready(function(){
   $('section .margin-none a').on("click", function(){
     analytics_app.report("New bookmark URL Created");
   });
+});
+
+$(document).ready(function(){
   $('.fa-heart').on("click", function(){
     analytics_app.report("Voting up");
   });
