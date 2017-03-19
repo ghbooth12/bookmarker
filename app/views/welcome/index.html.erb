@@ -18,8 +18,8 @@
   </div>
 
   <a href="https://github.com/ghbooth12/bookmarker" target="_blank" class="btn btn-info"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a>
-  <a id="target-element" class="btn btn-primary" href="/topics" role="button">See All Bookmarks</a>
   <%= link_to "Sign in as test user", auto_sign_path, class: 'btn btn-success' %>
+  <a id="target-element" class="btn btn-primary" href="/topics" role="button">See All Bookmarks</a>
 </div>
 
 <div id="steps" class="row">
@@ -37,14 +37,26 @@
               Log in as test user automatically. <%= link_to "Click here", auto_sign_path, class: 'btn btn-xs btn-success' %>
             </li>
             <li>
-              <%= link_to topics_path do %>
+              <%= link_to topics_path, target: '_blank' do %>
                 Go to all bookmarks page. <span class="glyphicon glyphicon-link" aria-hidden="true"></span>
               <% end %>
             </li>
             <li>
-              <%= link_to  %>
+              Click <span class="lead">&hearts;</span> to vote up.
             </li>
-            
+            <li>
+              <%= link_to user_path(@test_user), target: '_blank' do %>
+                URLs that user registered and saved are listed here. <span class="glyphicon glyphicon-link" aria-hidden="true"></span>
+              <% end %>
+            </li>
+            <li>
+              Register URLs on the website or via email.
+            </li>
+            <li>
+              <%= link_to topic_path(1), target: '_blank' do %>
+                Hover over the url detail panel to link to SNS. <span class="glyphicon glyphicon-link" aria-hidden="true"></span>
+              <% end %>
+            </li>
           </ol>
         </div>
       </div>

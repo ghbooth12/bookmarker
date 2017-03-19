@@ -2,6 +2,7 @@ class WelcomeController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
+    @test_user = User.find_by(email: "test@test.io")
   end
 
   def auto_sign

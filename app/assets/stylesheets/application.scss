@@ -96,3 +96,16 @@ a:hover {
 .embedly-card {
   height: 400px;
 }
+
+#steps {
+  li {
+    font-size: 1.2em;
+  }
+  // Override hove-link for bootstrap buttons
+  a.btn {
+    color: #fff;
+    &:hover {
+      color: #fff;
+    }
+  }
+}
